@@ -3,10 +3,14 @@ require_relative 'main'
 
 
 describe World do
+  
+  before(:each) do
+    @world = World.new
+  end
+  
   it "runs a world in 100 generations" do
-    world = World.new
-    world.start(100)
-    world.generation.should eq(100)
+    @world.start(100)
+    @world.generation.should eq(100)
   end
 end
 
@@ -15,6 +19,11 @@ describe ChromossomesRandomizer do
   it "creates a randomizer which will generate a chromossome with 2 genes" do
     randomizer = ChromossomesRandomizer.new(2)
     randomizer.create().length.should eq(2)
+  end
+
+  it "creates a chromossome with 10 genes being " do
+    randomizer = ChromossomesRandomizer.new(10, 42)
+    randomizer.create().should eq [0.37, 0.95, 0.73, 0.6, 0.16, 0.16, 0.06, 0.87, 0.6, 0.71]
   end
 end
 

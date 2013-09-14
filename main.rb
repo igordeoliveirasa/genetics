@@ -1,12 +1,13 @@
 
 
 class ChromossomesRandomizer
-  def initialize(genes_count)
+  def initialize(genes_count, seed = Random.new_seed)
+    srand seed
     @genes_count = genes_count
   end
 
   def create
-    Array.new(@genes_count)
+    Array.new(@genes_count).map { |item| rand.round(2) }
   end
 end
 
@@ -28,10 +29,11 @@ end
 
 
 class Being
-  attr_accessor :chromossomes
+  attr_accessor :chromossomes, :breath
 
   def initialize(chromossomes)
     @chromossomes = chromossomes
+    @breath = 100
   end
 
 end
