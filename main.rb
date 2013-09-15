@@ -33,7 +33,6 @@ class Being
 
   def initialize(chromossomes)
     @chromossomes = chromossomes
-    @breath = 100
   end
 
 end
@@ -41,10 +40,11 @@ end
 
 
 class World
-  attr_accessor :generation
+  attr_accessor :generation, :population
 
-  def initialize
+  def initialize(population)
     @generation = 0
+    @population = population
   end
 
   def start(generations)

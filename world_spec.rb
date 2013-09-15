@@ -5,10 +5,16 @@ require_relative 'main'
 describe World do
   
   before(:each) do
-    @world = World.new
+  end
+  
+  it "creates a world with 1000 beings and 10 genes each of them" do
+    @world = World.new(PopulationFactory.build(1000, ChromossomesRandomizer.new(10)))
+    @world.population.length.should eq(1000)
+    @world.population[0].chromossomes.length.should eq(10)
   end
   
   it "runs a world in 100 generations" do
+    @world = World.new(PopulationFactory.build(1000, ChromossomesRandomizer.new(10)))
     @world.start(100)
     @world.generation.should eq(100)
   end
